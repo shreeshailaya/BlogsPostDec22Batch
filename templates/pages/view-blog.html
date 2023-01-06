@@ -1,0 +1,101 @@
+{% include 'utility/navbar.html' %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Products</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">    
+   
+</head>
+
+<body>
+    
+    <div class="card text-white bg-secondary mb-3" style="max-width: max;">
+    <div class="card-header" style="color: aliceblue;">ID : {{blog_data.id}}</div>
+        <div class="card-body">
+            <img src="{{ blog_data.img.url }}" alt="" style="margin: 10px;" width="1000px" height="500px">
+          <h2 class="card-title">Title : {{blog_data.title}}</h2>
+          <p class="card-title">Description : {{blog_data.description}}</p>
+          <p class="card-text">Tags : {{blog_data.tags}}</p>
+          <p class="card-text">No of Lines : {{blog_data.no_lines}}</p>
+          <p class="card-text">Publisher : {{blog_data.publisher}}</p>  
+        </div>
+      </div>
+      </section>
+
+<section style="background-color: #eee;">
+        <div class="container my-5 py-5">
+          <div class="row d-flex justify-content-center">
+            <div class="col-md-12 col-lg-10 col-xl-8">
+              <div class="card">
+                <div class="card-body">
+                    {% for i in comments_data %}
+                  <div class="d-flex flex-start align-items-center">
+                    <img class="rounded-circle shadow-1-strong me-3"
+                      src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(19).webp" alt="avatar" width="60"
+                      height="60" />
+                    <div>
+                      <h6 class="fw-bold text-primary mb-1">{{i.user}}</h6>
+                      <p class="text-muted small mb-0">
+                        Shared publicly - {{i.time}}
+                      </p>
+                    </div>
+                  </div>
+      
+                  <p class="mt-3 mb-4 pb-2">
+                   {{i.comment}}
+                  </p>
+      
+                  <div class="small d-flex justify-content-start">
+                    <a href="#!" class="d-flex align-items-center me-3">
+                      <i class="far fa-thumbs-up me-2"></i>
+                      <p class="mb-0">Like</p>
+                    </a>
+                    <a href="#!" class="d-flex align-items-center me-3">
+                      <i class="far fa-comment-dots me-2"></i>
+                      <p class="mb-0">Comment</p>
+                    </a>
+                    <a href="#!" class="d-flex align-items-center me-3">
+                      <i class="fas fa-share me-2"></i>
+                      <p class="mb-0">Share</p>
+                    </a>
+                  </div> <br><br>
+                  {% endfor %}
+                </div>
+
+
+                <form action="/add_comment/">
+                <div class="card-footer py-3 border-0" style="background-color: #f8f9fa;">
+                  <div class="d-flex flex-start w-100">
+                    <img class="rounded-circle shadow-1-strong me-3"
+                      src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(19).webp" alt="avatar" width="40"
+                      height="40" />
+                    <div class="form-outline w-100">
+                      <input name="msg" class="form-control" id="textAreaExample" rows="4"
+                        style="background: #fff;"></textarea>
+                        <input type="text" name="id" value="{{blog_data.id}}" hidden>
+                      <label class="form-label" for="textAreaExample">Message</label>
+                    </div>
+                  </div>
+                  
+                  <div class="float-end mt-2 pt-1">
+                    <br>
+                    <button type="submit" class="btn btn-primary btn-sm">Post comment</button>
+                    <button type="button" class="btn btn-outline-primary btn-sm">Cancel</button>
+                  <br><br>
+                </div>
+                </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </section>
+
+    
+</body>
+</html>

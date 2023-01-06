@@ -1,0 +1,26 @@
+{% load static%}
+{% include 'utility/navbar.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Form</title>
+    <script src="{% static 'js/script.js' %}"></script>
+</head>
+<body>
+    <form action="{% url 'updatedata' %}" method="post">
+        {%csrf_token%}
+      <input type="number" name="i-d" id="" value="{{blog_data.id}}" hidden>
+        <br> <br>  Title = <input type="text" name="title" value="{{blog_data.title}}" id=""> <br>
+         <br> <br> Desc = <input type="text" name="description" value="{{blog_data.description}}" id="">
+         <br> <br> Tags = <input type="text" name="tags" id="" value="{{blog_data.tags}}">
+         <br> <br> Publisher = <input type="text" name="publisher" id="" value="{{blog_data.publisher}}">
+         <br> <br> No_lines = <input type="text" name="no_lines" id="" value="{{blog_data.no_lines}}">
+        <br> <br> <input type="submit" value="UPDATE">
+    
+      </form>
+    
+</body>
+</html>

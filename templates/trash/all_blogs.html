@@ -1,0 +1,52 @@
+{% include 'navbar.html' %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Products</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">    
+   
+    {% for i in blogs%}
+    <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+        <div class="card-header">Title : {{i.title}}</div>
+        <div class="card-body">
+            <h5 class="card-title">ID : {{i.id}}</h5>
+          <h5 class="card-title">Description : {{i.description}}</h5>
+          <p class="card-text">Publisher : {{i.publisher}}</p>
+        </div>
+      </div>
+
+    {% endfor %}
+
+
+    <br><br>
+<h1>Delete Blog</h1>
+    <form action="delete" method="get">
+
+        ID of Blog<input type="text" name="id">
+        <input type="submit" value="DELETE">
+    </form>
+<br><br>
+<h1>Add Blog</h1>
+    <form action="add_blog" method="post">
+      {%csrf_token%}
+        Title = <input type="text" name="title" id="">
+        Desc = <input type="text" name="description2 " id="">
+        Tags = <input type="text" name="tags" id="">
+        Publisher = <input type="text" name="publisher" id="">
+        No_lines = <input type="text" name="no_lines" id="">
+        <input type="submit" value="Add Blog">
+
+    </form>
+
+    <p style="color: red;">{{success}}</p>
+
+    <br>
+    <h1>footer</h1>
+    <br>
+    
+</body>
+</html>
